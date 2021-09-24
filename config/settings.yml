@@ -1,0 +1,12 @@
+per_page_18: 18
+validation:
+  max_length_50: 50
+  max_length_255: 255
+  min_length_8: 8
+format_time: "%Y-%m-%dT%H:%M"
+format_time_view: "%H:%M %d-%m-%Y"
+hour_in_day_20: 20
+hour_in_month_24_20: 480
+hour_24: 24
+hour_1: 1
+round_3: 3

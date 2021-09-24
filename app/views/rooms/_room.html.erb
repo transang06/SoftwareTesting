@@ -1,0 +1,26 @@
+<div class="col">
+  <div class="card h-100"> 
+    <% if room.images[0] %>
+      <%= image_tag room.images[0] ,:class => "card-img-top", :alt => room.images[0] %>
+    <% else %>
+      <%= image_tag asset_path("hotel.jpg"), class: "card-img-top", alt: "Hotel" %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= room.name %></h5>
+      <p class="card-text"><%= room.description %></p>
+      <p class="card-text"><%= room.type_room %></p>
+      <ul>
+        <li>
+          <%= t "rooms.hourly_price", price: number_to_currency(room.hourly_price, locale: :vi) %>
+        </li>
+        <li>
+          <%= t "rooms.day_price", price: number_to_currency(room.day_price, locale: :vi) %>
+        </li>
+        <li>
+          <%= t "rooms.monthly_price", price: number_to_currency(room.monthly_price, locale: :vi) %>
+        </li>
+      </ul>
+      <%= link_to "Show detail", room ,class: "btn-grad" %>
+    </div>
+  </div>
+</div>

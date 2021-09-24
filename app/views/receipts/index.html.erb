@@ -1,0 +1,28 @@
+<% provide :title, t("receipt.history") %>
+<h1><%= t "receipt.history" %></h1>
+<% unless @receipts.any? %>
+  <p class="text-center">
+    <%= t "cart.cart_nil_html", link: link_to(t("other.go_back"), root_path) %>
+  </p>
+<% else %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><%= t "receipt.table.from" %></th>
+        <th scope="col"><%= t "receipt.table.to" %></th>
+        <th scope="col"><%= t "receipt.table.into_money" %></th>
+        <th scope="col"><%= t "receipt.table.paid" %></th>
+        <th scope="col"><%= t "receipt.payment" %></th>
+        <th scope="col"><%= t "receipt.table.status" %></th>
+        <th scope="col"><%= t "receipt.table.action" %></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @receipts.each_with_index do |receipt, index| %>
+      <%= render "receipt", receipt: receipt, index: index %>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @receipts %>
+<% end %>

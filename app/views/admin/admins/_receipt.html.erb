@@ -1,0 +1,15 @@
+<td scope="row" class="fw-bold"><%= link_to "##{receipt.id}", receipt %></td>
+<td scope="row" class="fw-bold"><%= link_to receipt.room.name, receipt.room %></td>
+<td scope="row" class="fw-bold"><%= link_to receipt.user.last_name, receipt.user %></td>
+<td><%= receipt.from_time.strftime Settings.format_time_view %></td>
+<td><%= receipt.end_time.strftime Settings.format_time_view %></td>
+<td><%= number_to_currency receipt.into_money, locale: :vi %></td>
+<td><%= number_to_currency receipt.paid, locale: :vi %></td>
+<td><%= receipt.payment %></td>
+<td class="<%= color_text receipt.status %> fw-bold"><%= t "receipt.status_bill.#{receipt.status}" %></td>
+<td>
+  <%= link_to( fa_icon("check-circle"), approved_admin_receipts_path(id: receipt.id), {data: {confirm: t("admin.confirm_approved")}, method: :put, remote: true,
+  "data-bs-toggle": "tooltip", title: t("receipt.status_bill.approved"), class: "mx-2 fs-5 text-success"}) if receipt.wait?  %>
+  <%= link_to( fa_icon("trash"), reject_admin_receipts_path(id: receipt.id), {data: {confirm: t("admin.confirm_reject")}, method: :put, remote: true,
+  "data-bs-toggle": "tooltip", title: t("receipt.status_bill.cancelled_by_admin"), class: "mx-2 fs-5 text-muted"}) if receipt.wait?  %>
+</td>

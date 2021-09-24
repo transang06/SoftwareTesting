@@ -1,0 +1,37 @@
+<%= t("receipt.receipts", id: @receipt.id, job_title: t("users.job_title.#{@user.role}"),name: @user.first_name + " " + @user.last_name) %>
+*******************
+<%= t("receipt.status_bill.#{@receipt.status}") %>
+*******************
+
+<%= t "receipt.customer_info" %>
+===================
+
+<%= t "users.name" %>: <%= @user.first_name + " " + @user.last_name %> 
+<%= t "users.phone" %>: <%= @user.phone %> 
+<%= t "birth.customer_info" %>: <%= @user.date_of_birth %>
+
+<%= t "receipt.invoice_info" %>
+===================
+
+id: <%= link_to @receipt.id, receipt_url(id: @receipt.id) %>
+<%= t "receipt.table.status" %>: <%= @receipt.status %>
+<%= t "receipt.payment_by" %>: <%= @receipt.payment %>
+
+<%= t "receipt.booking_info" %>
+===================
+
+<%= t "rooms.room" %>: <%= link_to @receipt.room.name, room_url(id: @receipt.room_id) %>
+<%= t "receipt.table.from" %>: <%= @receipt.from_time.strftime Settings.format_time_view %>
+<%= t "receipt.table.to" %>: <%= @receipt.end_time.strftime Settings.format_time_view %>
+<%= t "cart.rental_period", time: distance_of_time_in_words(@receipt.from_time, @receipt.end_time) %>/<%= convert_to_hours(@receipt.end_time, @receipt.from_time) %>h
+<%= t "receipt.table.into_money" %>: <%= number_to_currency @receipt.into_money, locale: :vi %>
+<%= t "receipt.payment" %>: <%= number_to_currency @receipt.paid, locale: :vi %>
+<%= t "receipt.amount_unpaid" %>: <%= number_to_currency @receipt.into_money - @receipt.paid, locale: :vi %>
+
+
+<%= t "receipt.deail_price" %>
+===================
+
+<%= t "rooms.hourly_price", price: number_to_currency(@receipt.hourly_price, locale: :vi) %>
+<%= t "rooms.day_price", price: number_to_currency(@receipt.day_price, locale: :vi) %>
+<%= t "rooms.monthly_price", price: number_to_currency(@receipt.monthly_price, locale: :vi) %>

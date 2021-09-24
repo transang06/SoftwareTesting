@@ -1,0 +1,49 @@
+<% provide :title, @room.name %>
+<div class="container px-4 my-5">
+  <div class="row gx-5">
+    <div class="col">
+      <% @room.images.each do |image| %> 
+        <%= image_tag image, class: "img-fluid rounded m-3" %> 
+      <% end %>
+    </div>
+    <div class="col mx-5">
+      <h1><%= @room.name %></h1>
+      <h5> <%= t "rooms.descriptions" %></h5>
+      <p><%= @room.description %></p>
+      <h6><%= t("rooms.amount_of_people", people: @room.amount_of_people ) %></h6>
+      <h6><%= t "rooms.price" %></h6>
+      <ul>
+        <li>
+          <%= t "rooms.hourly_price", price: number_to_currency(@room.hourly_price, locale: :vi) %>
+        </li>
+        <li>
+          <%= t "rooms.day_price", price: number_to_currency(@room.day_price, locale: :vi) %>
+        </li>
+        <li>
+          <%= t "rooms.monthly_price", price: number_to_currency(@room.monthly_price, locale: :vi) %>
+        </li>
+      </ul>
+      <strong><%= t "rooms.type_room" %></strong>
+      <p><%= @room.type_room %></p>
+      <%= @room.discount if @room.discount != 0 %>
+      <strong><%= t "rooms.furnitures" %></strong>
+      <%= render @furnitures %>
+      <%= form_tag add_carts_path, remote: true do %>
+        <div class="input-group">
+          <div class="m-2">
+            <%= label_tag :from_time, nil, class: "my-2" %>
+            <%= datetime_field_tag :from_time, nil, value: time_current, class: "form-control me-2", required: true, min: time_current %>
+          </div>
+          <div class="m-2">
+            <%= label_tag :end_time, nil, class: "my-2" %>
+            <%= datetime_field_tag :end_time, nil, value: time_current(Settings.hour_1.hour), class: "form-control me-2", required: true, min: time_current(Settings.hour_1.hour) %>
+          </div> 
+          <div class="input-group-btn">
+            <%= hidden_field_tag :room_id, nil, value: @room.id %>
+            <%= submit_tag t("cart.add_to_cart"), class: "btn-grad" %>
+          </div>       
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<tr>
+  <th scope="row"><%= link_to "##{index}", receipt %></th>
+  <td><%= receipt.from_time.strftime Settings.format_time_view %></td>
+  <td><%= receipt.end_time.strftime Settings.format_time_view %></td>
+  <td><%= number_to_currency receipt.into_money, locale: :vi %></td>
+  <td><%= number_to_currency receipt.paid, locale: :vi %></td>
+  <td><%= receipt.payment %></td>
+  <td><%= t "receipt.status_bill.#{receipt.status}" %></td>
+  <td>
+    <%= link_to( t("receipt.cancel_booking"), cancel_booking_receipts_path(id: receipt.id), {data: {confirm: t("receipt.confirm_cancel")}, method: :post, remote: true, class: "mx-3"}) if receipt.wait?  %>
+  </td>
+</tr>

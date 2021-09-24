@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title yield :title %></title>
+    <%= render "layouts/shim" %>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col col-md-3 col-lg-2 bg-dark p-0 border-end">
+          <%= render "layouts/admin/left_bar" %>
+        </div>
+        <div class="col col-md-9 col-lg-10 bg-light p-0" id="main-body">
+          <div class="col">
+            <%= render "layouts/admin/top_bar" %>
+          </div>
+          <div id="flash">
+            <%= render "layouts/flash" %>
+          </div>
+          <div class="p-3">
+            <%= yield %> 
+          </div>         
+        </div>
+      </div>      
+    </div>
+  </body>
+</html>

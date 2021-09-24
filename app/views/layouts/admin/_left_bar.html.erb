@@ -1,0 +1,6 @@
+<h4 class="p-3 text-center bg-light m-0">
+  <%= link_to t("admin.admin_dashboard"), admin_root_path %>
+</h4>
+<div class="list-group-flush">
+  <%= link_to t("admin.admin_dashboard"), admin_root_path, class: "list-group-item list-group-item-action my-2 py-3 #{active_class(:admins, :index)}" %>
+</div>
