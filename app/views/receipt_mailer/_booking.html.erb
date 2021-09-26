@@ -1,0 +1,67 @@
+<h2>
+  <%= t("receipt.receipts", id: @receipt.id, job_title: t("users.job_title.#{@user.role}"),name: @user.first_name + " " + @user.last_name) %>
+</h2>
+<%= content_tag(:h2, t("receipt.status_bill.#{@receipt.status}")) %>
+<h2><%= t "receipt.customer_info" %></h2>
+<table>
+  <tr>
+    <th><%= t "users.name" %></th>
+    <th><%= t "users.phone" %></th>
+    <th><%= t "birth.customer_info" %></th>
+  </tr>
+  <tr>
+    <td><%= @user.first_name + " " + @user.last_name %> </td>
+    <td><%= @user.phone %></td>
+    <td><%= @user.date_of_birth %></td>
+  </tr>
+</table>
+<h2><%= t "receipt.invoice_info" %></h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th><%= t "receipt.table.status" %></th>
+    <th><%= t "receipt.payment_by" %></th>
+  </tr>
+  <tr>
+    <td><%= link_to @receipt.id, receipt_url(id: @receipt.id) %></td>
+    <td><%= @receipt.status %></td>
+    <td><%= @receipt.payment %></td>
+  </tr>
+</table>
+<h2><%= t "receipt.booking_info" %></h2>
+<table>
+  <tr>
+    <th><%= t "rooms.room" %></th>
+    <th><%= t "receipt.table.from" %></th>
+    <th><%= t "receipt.table.to" %></th>
+    <th><%= t "cart.rental_period" %></th>
+    <th><%= t "receipt.table.into_money" %></th>
+  </tr>
+  <tr>
+    <td><%= link_to @receipt.room.name, room_url(id: @receipt.room_id) %></td>
+    <td><%= @receipt.from_time.strftime Settings.format_time_view %></td>
+    <td><%= @receipt.end_time.strftime Settings.format_time_view %></td>
+    <td><%= distance_of_time_in_words(@receipt.from_time, @receipt.end_time) %>/<%= convert_to_hours(@receipt.end_time, @receipt.from_time) %>h</td>
+    <td><%= number_to_currency @receipt.into_money, locale: :vi %></td>
+  </tr>
+  <tr>
+      <th colspan="4"><%= t "receipt.total" %></th>
+      <th><%= number_to_currency @receipt.into_money, locale: :vi %></th>
+  </tr>
+  <tr>
+    <th colspan="4"><%= t "receipt.amount_unpaid" %></th>
+    <th><%= number_to_currency @receipt.paid, locale: :vi %></th>
+  </tr>
+</table>
+<h5><%= t "receipt.deail_price" %></h5>
+<ul>
+  <li>
+    <%= t "rooms.hourly_price", price: number_to_currency(@receipt.hourly_price, locale: :vi) %>
+  </li>
+  <li>
+    <%= t "rooms.day_price", price: number_to_currency(@receipt.day_price, locale: :vi) %>
+  </li>
+  <li>
+    <%= t "rooms.monthly_price", price: number_to_currency(@receipt.monthly_price, locale: :vi) %>
+  </li>
+</ul>

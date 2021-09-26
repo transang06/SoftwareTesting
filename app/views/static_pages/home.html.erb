@@ -1,0 +1,18 @@
+<% provide :title, t(".title") %>
+<% unless logged_in? %>
+  <div class="all-title-box">
+    <div class="container wrapper-content">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2><%= t "static_pages.home.title" %></h2>
+          <%= link_to t("static_pages.login"), login_path, class: "btn btn-lg btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+  <h2 class="my-5"><%= params[:key] ? t("other.search_results") : t("rooms.all_rooms") %></h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+    <%= render(@rooms) || t("other.search_not_matching") %>
+  </div>
+<%= paginate @rooms %>
