@@ -63,5 +63,9 @@ input {
   position: fixed;
   bottom: 30px;
   right: 20px;
-  z-index: 1;
+  z-index: 100;
+}
+.alert-alert,
+.alert-notice {
+  background-color: #f1ecc3;
 }

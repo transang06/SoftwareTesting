@@ -1,10 +1,10 @@
 <div class="card card-body  mx-5 mb-4 mt-1 bg-secondary">
   <%= form_tag search_path, method: :get, class:"d-flex" do %>
-    <%= datetime_field_tag :from_time, nil, value: params[:from_time], class: "form-control mx-3", min: time_current, required: true %>
-    <%= datetime_field_tag :end_time, nil, value: params[:end_time], class: "form-control mx-3", min: time_current(Settings.hour_1.hour), required: true %>
-    <%= number_field_tag :min, nil, value: params[:min], min: 0, placeholder: "Price to", class: "form-control mx-3", required: true %>
-    <%= number_field_tag :max, nil, value: params[:max], min: 0, placeholder: "Price from", class: "form-control mx-3", required: true %>
-    <%= search_field_tag :key, params[:key], class: "form-control mx-3", placeholder: "Furniture, type, name,...", required: true %>
+    <%= datetime_field_tag :from_time, nil, value: params[:from_time], class: "form-control mx-3", min: time_current %>
+    <%= datetime_field_tag :end_time, nil, value: params[:end_time], class: "form-control mx-3", min: time_current(Settings.hour_1.hour) %>
+    <%= number_field_tag :min, nil, value: params[:min], min: 0, placeholder: t("other.price_from"), class: "form-control mx-3" %>
+    <%= number_field_tag :max, nil, value: params[:max], min: 0, placeholder: t("other.price_to"), class: "form-control mx-3" %>
+    <%= search_field_tag :key, params[:key], class: "form-control mx-3", placeholder: t("other.search_name") %>
     <%= submit_tag t("other.search"), class: "btn btn-primary col-1" %>
   <% end %>
 </div>

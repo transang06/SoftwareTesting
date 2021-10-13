@@ -3,7 +3,7 @@
     <%= t "cart.cart_nil_html", link: link_to(t("other.go_back"), root_path) %>
   </p>
 <% else %>
-  <h2>Room list in cart</h2>
+  <h2><%= t "cart.list" %></h2>
   <div class="list-group">
     <% session[:cart].each do |cart_row| %>
       <%= render "cart_row", cart_row: cart_row %>

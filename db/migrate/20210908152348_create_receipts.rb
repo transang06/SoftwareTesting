@@ -15,7 +15,7 @@ class CreateReceipts < ActiveRecord::Migration[6.1]
       t.decimal :paid
       t.datetime :paid_at
       t.integer :status, default: 0
-
+      
       t.timestamps
     end
   end

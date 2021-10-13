@@ -1,7 +1,7 @@
 class ReceiptsController < ApplicationController
   include CartsHelper
-  before_action :store_location, :logged_in_user
-  before_action :load_room_in_cart, :load_room, only: :create
+  before_action :authenticate_user!
+  before_action :load_room_in_cart, :load_room, :check_time_busy, only: :create
 
   def index
     @receipts = current_user.receipts
@@ -29,8 +29,18 @@ class ReceiptsController < ApplicationController
 
   def cancel_booking
     @receipt = current_user.receipts.find_by id: params[:id]
-    @receipt.cancelled_by_you! if @receipt.wait?
-    redirect_to @receipt
+    if @receipt
+      if @receipt.wait?
+        @receipt.cancelled_by_you!
+        flash[:success] = t "receipt.cancel_suc"
+      else
+        flash[:warning] = t "receipt.invalid_status"
+      end
+      redirect_to @receipt
+    else
+      flash[:danger] = t "receipt.not_exist"
+      redirect_to receipts_path
+    end
   end
 
   private
@@ -48,11 +58,7 @@ class ReceiptsController < ApplicationController
     @receipt.into_money = into_money
     @receipt.paid = into_money
     @receipt.paid_at = DateTime.now
-    begin
-      @receipt.save!
-    rescue
-      return false
-    end
+    @receipt.save
   end
 
   def load_room_in_cart
@@ -69,5 +75,14 @@ class ReceiptsController < ApplicationController
 
     flash[:warning] = t "rooms.not_exist"
     redirect_to carts_path
+  end
+
+  def check_time_busy
+    @time_busy = @room.receipts.status_approved
+                      .on_busy @cart["from_time"], @cart["end_time"]
+    return unless @time_busy.any?
+
+    flash[:warning] = t "cart.booked"
+    redirect_to @room
   end
 end

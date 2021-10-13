@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :trackable,
+         :recoverable, :rememberable, :validatable, :confirmable
   has_many :receipts, dependent: :destroy
   has_many :working_shift_staffs, dependent: :destroy
   has_many :receipt_details, through: :receipts
@@ -21,44 +24,9 @@ class User < ApplicationRecord
     uniqueness: true
   validates :password, presence: true, length:
     {minimum: Settings.validation.min_length_8}, allow_nil: true
-  has_secure_password
   before_save{email.downcase!}
-  before_create :create_activation_digest
 
-  class << self
-    def digest string
-      cost = if ActiveModel::SecurePassword.min_cost
-               BCrypt::Engine::MIN_COST
-             else
-               BCrypt::Engine.cost
-             end
-      BCrypt::Password.create(string, cost: cost)
-    end
-
-    def new_token
-      SecureRandom.urlsafe_base64
-    end
-  end
-
-  def authenticated? attribute, token
-    digest = send "#{attribute}_digest"
-    return false unless digest
-
-    BCrypt::Password.new(digest).is_password?(token)
-  end
-
-  def activate
-    update_column(:activated_at, Time.zone.now)
-  end
-
-  def send_activation_email
-    UserMailer.account_activation(self).deliver_now
-  end
-
-  private
-
-  def create_activation_digest
-    self.activation_token = User.new_token
-    self.activation_digest = User.digest(activation_token)
+  def full_name
+    first_name + " " + last_name
   end
 end

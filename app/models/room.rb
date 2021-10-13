@@ -3,24 +3,24 @@ class Room < ApplicationRecord
   has_many :receipts, dependent: :destroy
   has_many_attached :images
 
+  validates :name, presence: true
+  validates :type_room, presence: true
+
+  before_save{name.capitalize!}
+
   scope :latest, ->{order name: :desc}
-  scope :search_name_furnitures, (lambda do |key|
-    joins(:furnitures)
-      .where("furnitures.name LIKE ?", "%#{key}%")
+  scope :price_greater, (lambda do |price|
+    where("hourly_price >= ?", price) if price.present?
   end)
-  scope :search_name_rooms, (lambda do |key|
-    where("rooms.name LIKE ? OR rooms.type_room LIKE ?", "%#{key}%", "%#{key}%")
+  scope :price_less, (lambda do |price|
+    where("hourly_price <= ?", price) if price.present?
   end)
-  scope :search_price, (lambda do |min, max|
-    where("(rooms.hourly_price >= ? AND rooms.hourly_price <= ?)
-          OR (rooms.day_price >= ? AND rooms.day_price <= ?)
-          OR (rooms.monthly_price >= ? AND rooms.monthly_price <= ?)",
-          min, max, min, max, min, max)
+  scope :name_has, (lambda do |key|
+    if key.present?
+      joins(:furnitures)
+      .where("furnitures.name LIKE ? OR rooms.name LIKE ? OR type_room LIKE ?",
+             "%#{key}%", "%#{key}%", "%#{key}%")
+    end
   end)
-  scope :search_time, ->(room_ids){where "rooms.id NOT IN (?)", room_ids}
-  scope :room_on_busy, (lambda do |from, to|
-    joins(:receipts)
-    .where("receipts.from_time >= ? AND receipts.end_time <= ?", from, to)
-    .select("rooms.id").distinct
-  end)
+  scope :not_in, ->(room_ids){where "rooms.id NOT IN (?)", room_ids}
 end

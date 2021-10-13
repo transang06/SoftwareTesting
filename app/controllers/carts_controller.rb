@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
-  before_action :load_room, :check_time_vali, only: %i(add change)
+  before_action :load_room, :check_time_vali,
+                :check_time_busy, only: %i(add change)
   before_action :check_exist_room_id, only: %i(change remove)
 
   def index; end
@@ -17,21 +18,19 @@ class CartsController < ApplicationController
 
   def remove
     session[:cart].delete params[:room_id]
-    flash[:danger] = t "cart.delete_success"
+    flash[:success] = t "cart.delete_success"
     redirect_to carts_path
   end
 
   private
 
   def check_time_vali
-    begin
-      from_time = params[:from_time].to_datetime
-      end_time = params[:end_time].to_datetime
-    rescue NoMethodError
-      flash[:danger] = t "cart.date_invalid"
-      redirect_to carts_path
-    end
+    from_time = params[:from_time].to_datetime
+    end_time = params[:end_time].to_datetime
     time_compare from_time, end_time
+  rescue StandardError
+    flash[:danger] = t "cart.date_invalid"
+    redirect_to @room
   end
 
   def time_compare from_time, end_time
@@ -42,7 +41,7 @@ class CartsController < ApplicationController
     return if check_time
 
     flash[:danger] = t "cart.date_invalid"
-    redirect_to carts_path
+    redirect_to @room
   end
 
   def sp_change
@@ -65,5 +64,14 @@ class CartsController < ApplicationController
 
     flash[:warning] = t "cart.not_exist_room"
     redirect_to carts_path
+  end
+
+  def check_time_busy
+    @time_busy = @room.receipts.status_approved
+                      .on_busy params[:from_time], params[:end_time]
+    return unless @time_busy.any?
+
+    flash[:warning] = t "cart.booked"
+    redirect_to @room
   end
 end

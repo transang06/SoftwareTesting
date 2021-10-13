@@ -5,7 +5,7 @@ class CreateFurnitures < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :quantity, default: 0
       t.text :description
-      
+
       t.timestamps
     end
   end

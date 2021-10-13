@@ -1,5 +1,5 @@
 <%= link_to(carts_path, class: "btn btn-secondary position-relative mx-3 p-1")  do %>
- <%= fa_icon("shopping-cart",class: "mx-1 fs-4") %>
+  <%= fa_icon("shopping-cart",class: "mx-1 fs-4") %>
   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
     <%= session[:cart].size %>
   </span>
