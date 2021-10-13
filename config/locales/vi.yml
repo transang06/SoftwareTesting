@@ -13,7 +13,7 @@ vi:
       contact: "Liên hệ"
     footer:
       title_app: "Hotel sample"
-      content_html: "Tạo © 9/9/2021 %{link} Thiết kế bởi: Hồng Thức & Văn Sáng"
+      content_html: "Tạo © 9/9/2021 %{link} Thiết kế bởi: Team 9"
   static_pages:
     login: "Đăng nhập"
     home:

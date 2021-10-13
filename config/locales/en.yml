@@ -13,7 +13,7 @@ en:
       contact: "Contact"
     footer:
       title_app: "Hotel sample"
-      content_html: "Create © 9/9/2021 %{link} Design By: Hong Thuc & Van Sang"
+      content_html: "Create © 9/9/2021 %{link} Design By: Team 9"
   static_pages:
     login: "Log in"
     home:
