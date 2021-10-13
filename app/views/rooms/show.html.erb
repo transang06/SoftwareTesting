@@ -47,3 +47,8 @@
     </div>
   </div>
 </div>
+<script> 
+  let room_id = "<%= @room.id  %>"
+</script>
+<div id="calendar"></div>
+<%= javascript_pack_tag "calendar_room.js" %> 

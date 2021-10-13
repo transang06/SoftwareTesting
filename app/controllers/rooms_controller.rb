@@ -1,14 +1,18 @@
 class RoomsController < ApplicationController
   before_action :load_room, only: :show
+  before_action :load_room_busy, only: :search
 
   def show
     @furnitures = @room.furnitures
+    @time_busy = @room.receipts.status_approved.select :from_time, :end_time
   end
 
   def search
-    @room_ids = Room.room_on_busy(params[:from_time], params[:end_time])
-    @rooms = Room.search_name_furnitures(params[:key])
-    support_search
+    @rooms = Room.name_has(params[:key])
+                 .price_greater(params[:min])
+                 .price_less(params[:max])
+                 .not_in(@room_ids_busy)
+                 .distinct.page(params[:page]).per Settings.per_page_18
     render "static_pages/home"
   end
 
@@ -22,10 +26,10 @@ class RoomsController < ApplicationController
     redirect_to root_path
   end
 
-  def support_search
-    @rooms = @rooms.or(Room.search_name_rooms(params[:key]))
-                   .or(Room.search_time(@room_ids))
-                   .or(Room.search_price(params[:min], params[:max]))
-                   .distinct.page(params[:page]).per Settings.per_page_18
+  def load_room_busy
+    @room_ids_busy = Receipt.status_approved
+                            .on_busy_from(params[:from_time])
+                            .on_busy_to(params[:end_time])
+                            .select(:room_id).distinct
   end
 end

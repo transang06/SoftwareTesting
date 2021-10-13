@@ -1,0 +1,27 @@
+<% provide(:title, current_user.full_name) %>
+<div class="mx-auto my-3 form_w">
+  <h1><%= current_user.full_name %></h1>
+  <div class="row">
+    <div class="col-md-offset-3">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control my-2", required: true %>
+        <%= f.hidden_field :reset_password_token %>
+        <%= f.label :password %> 
+        <i>(<%= t "users.leave_blank" %>)</i>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control my-2" %>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control my-2" %>
+        <%= f.label :current_password %>
+        <i>(<%= t "users.need_password" %>)</i>
+        <%= f.password_field :current_password, autocomplete: "new-password", class: "form-control my-2", required: true %>
+        <%= f.submit :Update, class: "btn btn-primary my-4" %>
+      <% end %>
+    </div>
+  </div>
+  <%= button_to t("users.cancel_account"), registration_path(resource_name), data: { confirm: t("users.aus") }, method: :delete, class: "btn btn-primary my-4" %>
+  <%= link_to t("other.go_back"), :back %>
+</div>
+
+
