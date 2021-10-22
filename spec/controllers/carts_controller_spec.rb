@@ -37,7 +37,9 @@ RSpec.describe CartsController, type: :controller do
         expect(flash[:danger]).to eq I18n.t("cart.date_invalid")
       end
 
-      it {expect(response).to redirect_to(room)}
+      it "is expected to redirect to room_path" do
+        expect(response).to redirect_to(room)
+      end
     end
 
     context "fail when room doesn't exist" do
@@ -47,7 +49,9 @@ RSpec.describe CartsController, type: :controller do
         expect(flash[:warning]).to eq I18n.t("rooms.not_exist")
       end
 
-      it {expect(response).to redirect_to(carts_path)}
+      it "is expected to redirect to carts_path" do
+        expect(response).to redirect_to(carts_path)
+      end
     end
     
     context "fail when time invalid" do
@@ -57,7 +61,9 @@ RSpec.describe CartsController, type: :controller do
         expect(flash[:danger]).to eq I18n.t("cart.date_invalid")
       end
 
-      it {expect(response).to redirect_to(room)}
+      it "is expected to redirect to room_path" do
+        expect(response).to redirect_to(room)
+      end
     end
   end
 
@@ -73,7 +79,9 @@ RSpec.describe CartsController, type: :controller do
         expect(assigns(:time_busy).any?).to eq false
       end
 
-      it {expect(response).to redirect_to(carts_path)}
+      it "is expected to redirect to carts_path" do
+        expect(response).to redirect_to(carts_path)
+      end
     end
   end
 end

@@ -17,7 +17,9 @@ RSpec.describe ReceiptsController, type: :controller do
         expect(assigns(:receipts)).to eq receipts
       end
 
-      it {expect(response).to render_template(:index)}
+      it "is expected to render template matcher index" do
+        expect(response).to render_template(:index)
+      end
     end
   end
 
@@ -29,7 +31,9 @@ RSpec.describe ReceiptsController, type: :controller do
         expect(assigns(:receipt)).to eq receipt
       end
 
-      it {expect(response).to render_template(:show)}
+      it "is expected to render template matcher show" do
+        expect(response).to render_template(:show)
+      end
     end
 
     context "fail when receipt not exist" do
@@ -38,8 +42,10 @@ RSpec.describe ReceiptsController, type: :controller do
       it "show flash danger" do
         expect(flash[:danger]).to eq I18n.t("receipt.not_permissions")
       end
-
-      it {expect(response).to redirect_to(receipts_path)}
+      
+      it "is expected to redirect to receipts_path" do
+        expect(response).to redirect_to(receipts_path)
+      end
     end
   end
 
@@ -55,7 +61,9 @@ RSpec.describe ReceiptsController, type: :controller do
         expect(assigns(:receipt).cancelled_by_you?).to be true
       end
 
-      it {expect(response).to redirect_to(receipt)}
+      it "is expected to redirect to receipts_path" do
+        expect(response).to redirect_to(receipt)
+      end
     end 
 
     context "fail when receipt is not found" do
@@ -65,7 +73,9 @@ RSpec.describe ReceiptsController, type: :controller do
         expect(flash[:danger]).to eq I18n.t("receipt.not_exist")
       end
 
-      it {expect(response).to redirect_to(receipts_path)}
+      it "is expected to redirect to receipts_path" do
+        expect(response).to redirect_to(receipts_path)
+      end
     end 
 
     context "fail when status receipt is not wait" do
@@ -82,7 +92,9 @@ RSpec.describe ReceiptsController, type: :controller do
         expect(flash[:warning]).to eq I18n.t("receipt.invalid_status")
       end
 
-      it {expect(response).to redirect_to(receipt)}
+      it "is expected to redirect to receipts_path" do
+        expect(response).to redirect_to(receipt)
+      end
     end
   end
 end

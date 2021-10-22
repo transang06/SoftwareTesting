@@ -11,8 +11,10 @@ RSpec.describe UsersController, type: :controller do
       it "assigns @user exist" do
         expect(assigns(:user)).to eq user
       end
-
-      it {expect(response).to render_template(:show)}
+      
+      it "is expected to render template matcher show" do
+        expect(response).to render_template(:show)
+      end
     end
 
     context "fail when invalid attributes" do
@@ -22,7 +24,9 @@ RSpec.describe UsersController, type: :controller do
         expect(flash[:danger]).to eq I18n.t("users.nil")
       end
 
-      it {expect(response).to redirect_to(root_path)}
+      it "is expected to redirect to root_path" do
+        expect(response).to redirect_to(root_path)
+      end
     end
   end
 end
