@@ -31,7 +31,9 @@ RSpec.describe RoomsController, type: :controller do
         expect(flash[:danger]).to eq I18n.t("rooms.not_exist")
       end
 
-      it {expect(response).to redirect_to(root_path)}
+      it "is expected to redirect to root_path" do
+        expect(response).to redirect_to(root_path)
+      end
     end
   end
 
