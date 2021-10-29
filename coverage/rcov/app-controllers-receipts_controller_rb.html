@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>app/controllers/receipts_controller.rb</title>
+    <link href="./assets/0.2.3/screen.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="./assets/0.2.3/print.css" media="print" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <script type="text/javascript" src="./assets/0.2.3/rcov.js"></script>
+  </head>
+  <body>
+    <h1>Softwaretesting C0 Coverage Information - Simploco - RCov</h1>
+    <h2>app/controllers/receipts_controller.rb</h2>
+
+    <div class="report_table_wrapper">
+      <table class='report' id='report_table'>
+        <thead>
+          <tr>
+            <th class="left_align">Name</th>
+            <th class="right_align">Total Lines</th>
+            <th class="right_align">Lines of Code</th>
+            <th class="left_align">Total Coverage</th>
+            <th class="left_align">Code Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="left_align"><a href="app-controllers-receipts_controller_rb.html">app/controllers/receipts_controller.rb</a></td>
+            <td class='right_align'><tt>88</tt></td>
+            <td class='right_align'><tt>58</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>64.77%</tt></div>
+      <div class="percent_graph">
+        <div class="covered" style="width:65px"></div>
+        <div class="uncovered" style="width:35px"></div>
+      </div></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>46.55%</tt></div>
+      <div class="percent_graph">
+        <div class="covered" style="width:47px"></div>
+        <div class="uncovered" style="width:53px"></div>
+      </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Key</h3>
+
+    <div class="key"><pre><span class='marked'>Code reported as executed by Ruby looks like this...</span><span class='marked1'>and this: this line is also marked as covered.</span><span class='inferred'>Lines considered as run by rcov, but not reported by Ruby, look like this,</span><span class='inferred1'>and this: these lines were inferred by rcov (using simple heuristics).</span><span class='uncovered'>Finally, here's a line marked as not executed.</span></pre></div>
+
+    <h3>Coverage Details</h3>
+
+    <table class="details">
+      <tbody>
+        <tr class="marked">
+          <td><pre><a name="line2">2</a> class ReceiptsController &lt; ApplicationController</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line3">3</a>   include CartsHelper</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line4">4</a>   before_action :authenticate_user!</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line5">5</a>   before_action :load_room_in_cart, :load_room, :check_time_busy, only: :create</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line6">6</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line7">7</a>   def index</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line8">8</a>     @receipts = current_user.receipts</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line9">9</a>                             .page(params[:page]).per(Settings.per_page_18)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line10">10</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line11">11</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line12">12</a>   def show</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line13">13</a>     @receipt = current_user.receipts.find_by id: params[:id]</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line14">14</a>     return if @receipt</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line15">15</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line16">16</a>     flash[:danger] = t &quot;receipt.not_permissions&quot;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line17">17</a>     redirect_to receipts_path</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line18">18</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line19">19</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line20">20</a>   def create</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line21">21</a>     if sp_save</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line22">22</a>       flash[:success] = t &quot;receipt.booking_successful&quot;</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line23">23</a>       session[:cart].delete params[:room_id]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line24">24</a>       redirect_to @receipt</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line25">25</a>     else</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line26">26</a>       flash[:danger] = t &quot;receipt.booking_fail&quot;</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line27">27</a>       redirect_to root_path</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line28">28</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line29">29</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line30">30</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line31">31</a>   def cancel_booking</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line32">32</a>     @receipt = current_user.receipts.find_by id: params[:id]</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line33">33</a>     if @receipt</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line34">34</a>       if @receipt.wait?</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line35">35</a>         @receipt.cancelled_by_you!</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line36">36</a>         flash[:success] = t &quot;receipt.cancel_suc&quot;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line37">37</a>       else</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line38">38</a>         flash[:warning] = t &quot;receipt.invalid_status&quot;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line39">39</a>       end</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line40">40</a>       redirect_to @receipt</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line41">41</a>     else</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line42">42</a>       flash[:danger] = t &quot;receipt.not_exist&quot;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line43">43</a>       redirect_to receipts_path</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line44">44</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line45">45</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line46">46</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line47">47</a>   private</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line48">48</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line49">49</a>   def sp_save</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line50">50</a>     into_money = sp_money @cart[&quot;end_time&quot;], @cart[&quot;from_time&quot;]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line51">51</a>     @receipt = current_user.receipts.new</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line52">52</a>     @receipt.payment = &quot;TP bank&quot;</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line53">53</a>     @receipt.room_id = params[:room_id]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line54">54</a>     @receipt.from_time = @cart[&quot;from_time&quot;]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line55">55</a>     @receipt.end_time = @cart[&quot;end_time&quot;]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line56">56</a>     @receipt.hourly_price = @room.hourly_price</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line57">57</a>     @receipt.day_price = @room.day_price</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line58">58</a>     @receipt.monthly_price = @room.monthly_price</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line59">59</a>     @receipt.into_money = into_money</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line60">60</a>     @receipt.paid = into_money</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line61">61</a>     @receipt.paid_at = DateTime.now</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line62">62</a>     @receipt.save</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line63">63</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line64">64</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line65">65</a>   def load_room_in_cart</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line66">66</a>     @cart = session[:cart][params[:room_id]]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line67">67</a>     return if @cart</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line68">68</a> </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line69">69</a>     flash[:warning] = t &quot;cart.not_exist_room&quot;</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line70">70</a>     redirect_to carts_path</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line71">71</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line72">72</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line73">73</a>   def load_room</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line74">74</a>     @room = Room.find_by id: params[:room_id]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line75">75</a>     return if @room</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line76">76</a> </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line77">77</a>     flash[:warning] = t &quot;rooms.not_exist&quot;</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line78">78</a>     redirect_to carts_path</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line79">79</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line80">80</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line81">81</a>   def check_time_busy</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line82">82</a>     @time_busy = @room.receipts.status_approved</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line83">83</a>                       .on_busy @cart[&quot;from_time&quot;], @cart[&quot;end_time&quot;]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line84">84</a>     return unless @time_busy.any?</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line85">85</a> </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line86">86</a>     flash[:warning] = t &quot;cart.booked&quot;</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line87">87</a>     redirect_to @room</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line88">88</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line89">89</a> end</pre></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Generated on 2021-10-29 16:43:46 +0700 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+
+  </body>
+</html>
