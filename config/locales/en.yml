@@ -79,8 +79,8 @@ en:
     search_not_matching: "There are no matching results"
     language: "Language"
     go_back: "go back"
-    price_from: "Price from"
-    price_to: "To"
+    price_greater: "Price greater than"
+    price_less: "Less than"
     search_name: "Furniture, type room, name,..."
   cart:
     rental_period_hour: "Rental period: %{time}"

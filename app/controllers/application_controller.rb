@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale, :init_cart
+  before_action :set_locale, :init_cart, :init_ransack
 
   protect_from_forgery with: :exception
 
@@ -33,10 +33,18 @@ class ApplicationController < ActionController::Base
     session[:cart] ||= {}
   end
 
+  def init_ransack
+    @q = Room.ransack params[:q], auth_object: set_ransack_auth_object
+  end
+
   def is_admin?
     return if current_user.admin?
 
     flash[:warning] = t "receipt.not_permissions"
     redirect_to root_url
+  end
+
+  def set_ransack_auth_object
+    current_user&.admin? ? :admin : nil
   end
 end

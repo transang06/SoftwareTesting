@@ -79,8 +79,8 @@ vi:
     search_not_matching: "Không có kết quả nào phù hợp"
     language: "Ngôn ngữ"
     go_back: "quay lại"
-    price_from: "Giá từ"
-    price_to: "Đến"
+    price_greater: "Giá lớn hơn"
+    price_less: "Ít hơn"
     search_name: "Nội thất, loại phòng, tên, ..."
   cart:
     rental_period_hour: "Thời gian thuê: %{time}"
@@ -97,7 +97,7 @@ vi:
     update: "Cập nhật"
     delete: "Xóa bỏ"
     not_exist_room : "Phòng này không tồn tại trong giỏ hàng của bạn, hãy kiểm tra lại"
-    date_invalid: "Invalid date and time format, please try again"
+    date_invalid: "Định dạng ngày và giờ không hợp lệ, vui lòng thử lại"
     list: "Danh sách phòng trong giỏ hàng"
     booked: "Phòng này đã có người đặt, vui lòng chọn thời gian khác"
   receipt:
