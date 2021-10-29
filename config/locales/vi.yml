@@ -97,7 +97,7 @@ vi:
     update: "Cập nhật"
     delete: "Xóa bỏ"
     not_exist_room : "Phòng này không tồn tại trong giỏ hàng của bạn, hãy kiểm tra lại"
-    date_invalid: "Invalid date and time format, please try again"
+    date_invalid: "Định dạng ngày và giờ không hợp lệ, vui lòng thử lại"
     list: "Danh sách phòng trong giỏ hàng"
     booked: "Phòng này đã có người đặt, vui lòng chọn thời gian khác"
   receipt:
