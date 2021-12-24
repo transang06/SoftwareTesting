@@ -12,7 +12,7 @@ RSpec.describe CartsController, type: :controller do
       expect(response).to render_template(:index)
     end
   end
-
+  
   describe "GET carts#add" do
     context "success when valid attributes" do
       before{post :add, params: params, xhr: true}

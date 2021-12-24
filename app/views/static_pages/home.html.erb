@@ -11,8 +11,9 @@
     </div>
   </div>
 <% end %>
-  <h2 class="my-5"><%= params[:key] ? t("other.search_results") : t("rooms.all_rooms") %></h2>
-  <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
-    <%= render(@rooms) || t("other.search_not_matching") %>
-  </div>
+<h2 class="my-5"><%= params[:key] ? t("other.search_results") : t("rooms.all_rooms") %></h2>
+<%= render "layouts/sort" %>
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+  <%= render(@rooms) || t("other.search_not_matching") %>
+</div> 
 <%= paginate @rooms %>

@@ -23,7 +23,7 @@ class User < ApplicationRecord
     format: {with: VALID_EMAIL_REGEX},
     uniqueness: true
   validates :password, presence: true, length:
-    {minimum: Settings.validation.min_length_8}, allow_nil: true
+    {minimum: Settings.validation.min_length_6}, allow_nil: true
   before_save{email.downcase!}
 
   def full_name
