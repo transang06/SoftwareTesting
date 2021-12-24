@@ -145,6 +145,8 @@ GEM
       railties (>= 3.2, < 7)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    groupdate (5.2.4)
+      activesupport (>= 5)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     image_processing (1.9.3)
@@ -180,6 +182,7 @@ GEM
     mini_portile2 (2.6.1)
     minitest (5.14.4)
     msgpack (1.4.2)
+    mysql2 (0.5.3)
     nio4r (2.5.8)
     nokogiri (1.12.4)
       mini_portile2 (~> 2.6.1)
@@ -367,11 +370,13 @@ DEPENDENCIES
   faker (= 2.1.2)
   figaro
   font-awesome-rails
+  groupdate
   image_processing (= 1.9.3)
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)
   mini_magick (= 4.9.5)
+  mysql2 (>= 0.4.4)
   pg (>= 0.18)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
