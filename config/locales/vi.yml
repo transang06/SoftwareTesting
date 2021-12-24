@@ -79,8 +79,8 @@ vi:
     search_not_matching: "Không có kết quả nào phù hợp"
     language: "Ngôn ngữ"
     go_back: "quay lại"
-    price_from: "Giá từ"
-    price_to: "Đến"
+    price_greater: "Giá lớn hơn"
+    price_less: "Ít hơn"
     search_name: "Nội thất, loại phòng, tên, ..."
   cart:
     rental_period_hour: "Thời gian thuê: %{time}"

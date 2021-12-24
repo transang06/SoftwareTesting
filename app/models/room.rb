@@ -8,19 +8,23 @@ class Room < ApplicationRecord
 
   before_save{name.capitalize!}
 
-  scope :latest, ->{order name: :desc}
-  scope :price_greater, (lambda do |price|
-    where("hourly_price >= ?", price) if price.present?
-  end)
-  scope :price_less, (lambda do |price|
-    where("hourly_price <= ?", price) if price.present?
-  end)
-  scope :name_has, (lambda do |key|
-    if key.present?
-      joins(:furnitures)
-      .where("furnitures.name LIKE ? OR rooms.name LIKE ? OR type_room LIKE ?",
-             "%#{key}%", "%#{key}%", "%#{key}%")
-    end
-  end)
+  ransack_alias :furnitures,
+                :name_or_type_room_or_description_or_furnitures_name
+  scope :latest, ->{order created_at: :desc}
   scope :not_in, ->(room_ids){where "rooms.id NOT IN (?)", room_ids}
+
+  class << self
+    def ransackable_attributes auth_object = nil
+      if auth_object == :admin
+        super
+      else
+        super & %w(name type_room hourly_price
+              description furnitures created_at)
+      end
+    end
+
+    def ransackable_scopes
+      %i(latest not_in)
+    end
+  end
 end

@@ -9,6 +9,8 @@ import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import "packs/bootstrap";
 require("jquery")
+require("chartkick")
+require("chart.js")
 
 Rails.start();
 Turbolinks.start();
