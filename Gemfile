@@ -23,7 +23,6 @@ gem "sass-rails", ">= 6"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 5.0"
 gem "ransack"
-gem "sqlite3", "~> 1.4"
 gem 'pg', '>= 0.18'
 
 group :development, :test do
