@@ -152,3 +152,7 @@ en:
     title_mail_cancel: "Refuse booking"
     head_mail_cancel: "Booking was not approved, sorry for this unpleasant experience!"
     head_mail_approced: "Booking approved! Thank you for using our service."
+    index:
+      weekly_revenue: "Weekly revenue"
+      spending_customer: "Spending limit of each customer"
+      weekly_registering_customers: "Number of new customers registering each week"
