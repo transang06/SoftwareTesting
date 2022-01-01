@@ -1779,10 +1779,15 @@ chalk@^2.0, chalk@^2.0.0, chalk@^2.4.1, chalk@^2.4.2:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chart.js@>=3.0.2, chart.js@^3.6.2:
+chart.js@>=3.0.2:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.6.2.tgz#47342c551f688ffdda2cd53b534cb7e461ecec33"
   integrity sha512-Xz7f/fgtVltfQYWq0zL1Xbv7N2inpG+B54p3D5FSvpCdy3sM+oZhbqa42eNuYXltaVvajgX5UpKCU2GeeJIgxg==
+
+chart.js@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.7.0.tgz#7a19c93035341df801d613993c2170a1fcf1d882"
+  integrity sha512-31gVuqqKp3lDIFmzpKIrBeum4OpZsQjSIAqlOpgjosHDJZlULtvwLEZKtEhIAZc7JMPaHlYMys40Qy9Mf+1AAg==
 
 chartjs-adapter-date-fns@>=2.0.0:
   version "2.0.0"
@@ -3241,6 +3246,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/hex-color-regex/-/hex-color-regex-1.1.0.tgz"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
+
+highcharts@^9.3.2:
+  version "9.3.2"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-9.3.2.tgz#20b34f7277169a48d7b5691f74705e8addc78cd3"
+  integrity sha512-I/48gNMvs3hZxZnPRUqLbnlrGZJJ7YPPVr1+fYeZ35p4pSZAOwTmAGbptrjBr7JlF52HmJH9zMbt/I4TPLu9Pg==
 
 hmac-drbg@^1.0.1:
   version "1.0.1"
