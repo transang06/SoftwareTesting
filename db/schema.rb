@@ -12,17 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2021_10_04_213051) do
 
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -34,14 +34,14 @@ ActiveRecord::Schema.define(version: 2021_10_04_213051) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "furnitures", force: :cascade do |t|
-    t.integer "room_id", null: false
+  create_table "furnitures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "room_id", null: false
     t.string "name"
     t.integer "quantity", default: 0
     t.text "description"
@@ -50,19 +50,19 @@ ActiveRecord::Schema.define(version: 2021_10_04_213051) do
     t.index ["room_id"], name: "index_furnitures_on_room_id"
   end
 
-  create_table "receipts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "room_id", null: false
+  create_table "receipts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
     t.string "payment"
     t.datetime "check_in"
     t.datetime "check_out"
     t.datetime "from_time"
     t.datetime "end_time"
-    t.decimal "hourly_price", default: "0.0"
-    t.decimal "day_price", default: "0.0"
-    t.decimal "monthly_price", default: "0.0"
-    t.decimal "into_money"
-    t.decimal "paid"
+    t.decimal "hourly_price", precision: 10, default: "0"
+    t.decimal "day_price", precision: 10, default: "0"
+    t.decimal "monthly_price", precision: 10, default: "0"
+    t.decimal "into_money", precision: 10
+    t.decimal "paid", precision: 10
     t.datetime "paid_at"
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
@@ -71,21 +71,21 @@ ActiveRecord::Schema.define(version: 2021_10_04_213051) do
     t.index ["user_id"], name: "index_receipts_on_user_id"
   end
 
-  create_table "rooms", force: :cascade do |t|
+  create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "type_room"
     t.boolean "status", default: false
-    t.decimal "hourly_price", default: "0.0"
-    t.decimal "day_price", default: "0.0"
-    t.decimal "monthly_price", default: "0.0"
+    t.decimal "hourly_price", precision: 10, default: "0"
+    t.decimal "day_price", precision: 10, default: "0"
+    t.decimal "monthly_price", precision: 10, default: "0"
     t.text "description"
-    t.decimal "discount", default: "0.0"
+    t.decimal "discount", precision: 10, default: "0"
     t.integer "amount_of_people", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "phone"
     t.string "first_name"
     t.string "last_name"
@@ -115,16 +115,16 @@ ActiveRecord::Schema.define(version: 2021_10_04_213051) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "working_shift_staffs", force: :cascade do |t|
-    t.integer "working_shift_id", null: false
-    t.integer "user_id", null: false
+  create_table "working_shift_staffs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "working_shift_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_working_shift_staffs_on_user_id"
     t.index ["working_shift_id"], name: "index_working_shift_staffs_on_working_shift_id"
   end
 
-  create_table "working_shifts", force: :cascade do |t|
+  create_table "working_shifts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "begin_shifts"
     t.datetime "end_shifts"
     t.string "name"

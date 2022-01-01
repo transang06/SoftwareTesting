@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
 
   def home
     @rooms = @q.result.not_in(@room_ids_busy).latest
-               .distinct.page(params[:page]).per Settings.per_page_18
+              .page(params[:page]).per Settings.per_page_18
   end
 
   def contact; end

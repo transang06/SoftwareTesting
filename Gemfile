@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
-ruby "2.7.4"
+ruby "2.7.0"
 
 gem "active_storage_validations", "0.8.2"
 gem "bcrypt", "3.1.13"
@@ -23,6 +23,9 @@ gem "sass-rails", ">= 6"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 5.0"
 gem "ransack"
+gem "pg", ">= 0.18"
+gem "groupdate"
+gem "mysql2", ">= 0.4.4"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -38,6 +41,7 @@ group :development do
   gem "rack-mini-profiler", "~> 2.0"
   gem "spring"
   gem "web-console", ">= 4.1.0"
+  gem "sqlite3", "~> 1.4"
 end
 
 group :test do

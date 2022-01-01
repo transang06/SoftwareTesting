@@ -1,4 +1,6 @@
 <% provide :title, t("admin.admin_dashboard") %>
+<%= line_chart Receipt.group_by_day(:created_at).count %>
+
 <h3><%= t "receipt.list" %></h3>
 <% unless @receipts.any? %>
   <h3 class="text-center"><%= t "admin.not_have_receipt" %></h3>
