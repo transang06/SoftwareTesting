@@ -152,3 +152,7 @@ vi:
     title_mail_cancel: "Từ chối đặt chỗ"
     head_mail_cancel: "Đặt phòng không được chấp thuận, xin lỗi vì trải nghiệm khó chịu này!"
     head_mail_approced: "Đặt chỗ đã được chấp thuận! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi."
+    index:
+      weekly_revenue: "Doanh thu hàng tuần"
+      spending_customer: "Hạn mức chi tiêu của từng khách hàng"
+      weekly_registering_customers: "Số lượng khách hàng đăng ký mới mỗi tuần"
