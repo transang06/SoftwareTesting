@@ -71,6 +71,7 @@ Rails.application.configure do
     enable_starttls_auto: true,
     openssl_verify_mode: "none"
   }
+  ActionMailer::Base.delivery_method = :smtp
 
   config.action_mailer.default_url_options = { :host => "thawing-refuge-11069.herokuapp.com" }
 
