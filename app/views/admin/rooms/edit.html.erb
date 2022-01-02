@@ -4,35 +4,46 @@
   <div class="row">
     <div class="col-md-offset-3">
       <%= form_for @room do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "email", class: "form-control my-2", required: true %>
-
-        <%= f.label :type_room %>
-        <%= f.text_field :type_room, class: "form-control my-2", required: true %>
-
-        <%= f.file_field :photo %>
-
-        <%= f.label :status %>
-        <%= f.check_box :status %>
-
-        <%= f.label :hourly_price %>
-        <%= f.number_field :hourly_price, class: "form-control my-2", required: true %>
-
-        <%= f.label :day_price %>
-        <%= f.number_field :day_price, class: "form-control my-2", required: true %>
-
-        <%= f.label :monthly_price %>
-        <%= f.number_field :monthly_price, class: "form-control my-2", required: true %>
-
+        <div class="row">
+          <div class="col-6">
+            <%= f.label :name %>
+            <%= f.text_field :name, autofocus: true, autocomplete: "email",
+              class: "form-control my-2", required: true %>
+          </div>
+          <div class="col-6">
+            <%= f.label :type_room %>
+            <%= f.text_field :type_room, class: "form-control my-2", required: true %>
+          </div>
+          <div class="col-4">
+            <%= f.label :hourly_price %>
+            <%= f.number_field :hourly_price, class: "form-control my-2", required: true %>
+          </div>
+          <div class="col-4">
+            <%= f.label :day_price %>
+            <%= f.number_field :day_price, class: "form-control my-2", required: true %>
+          </div>
+          <div class="col-4">
+            <%= f.label :monthly_price %>
+            <%= f.number_field :monthly_price, class: "form-control my-2", required: true %>
+          </div>
+          <div class="col-4">
+            <%= f.label :amount_of_people %>
+            <%= f.number_field :amount_of_people, class: "form-control my-2", required: true %>
+          </div>
+          <div class="col-4">
+            <%= f.label :discount %>
+            <%= f.number_field :discount, class: "form-control my-2", required: true %>
+          </div>
+          <div class="col-4">
+            <%= f.label :status %>
+            <%= f.check_box :status %>
+          </div>
+        </div>
         <%= f.label :description %>
-        <%= f.text_field :description, class: "form-control my-2", required: true %>
-
-        <%= f.label :amount_of_people %>
-        <%= f.number_field :amount_of_people, class: "form-control my-2", required: true %>
-
-        <%= f.label :discount %>
-        <%= f.number_field :discount, class: "form-control my-2", required: true %>
-
+        <%= f.text_area :description, class: "form-control my-2", rows: 5, required: true %>
+        <%= f.label :photo %>
+        <%= f.file_field :photo %>
+        <%= image_tag(@room.photo.url, class: "card-img-top my-4") if @room.photo.url %>
         <%= f.submit "Change", class: "btn btn-primary my-4" %>
       <% end %>
     </div>

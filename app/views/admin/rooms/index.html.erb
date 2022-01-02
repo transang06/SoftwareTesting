@@ -1,5 +1,8 @@
-<% provide :title, t("receipt.list") %>
-<h3><%= t "receipt.list" %></h3>
+<% provide :title, t("receipt.rooms_list") %>
+<div class="row justify-content-between">
+  <h3 class="col-3"><%= t "receipt.list" %></h3>
+  <%= link_to "Tạo mới", new_admin_room_path, class: "btn btn-primary col-1 p-3 m-2 fw-bold" %>
+</div>
 <% unless @rooms.any? %>
   <h3 class="text-center"><%= t "admin.not_have_receipt" %></h3>
 <% else %>
@@ -7,16 +10,16 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col"><%= "Name" %></th>
-        <th scope="col"><%= "Image" %></th>
-        <th scope="col"><%= "Type room" %></th>
-        <th scope="col"><%= "hourly_price" %></th>
-        <th scope="col"><%= "day_price" %></th>
-        <th scope="col"><%= "monthly_price" %></th>
-        <th scope="col"><%= "discount" %></th>
-        <th scope="col"><%= "amount_of_people" %></th>
-        <th scope="col"><%= "status" %></th>
-        <th scope="col"><%= "Action" %></th>
+        <th scope="col"><%= sort_link @q, :name %></th>
+        <th scope="col"><%= sort_link @q, :type_room %></th>
+        <th scope="col"><%= sort_link @q, :hourly_price %></th>
+        <th scope="col"><%= sort_link @q, :day_price %></th>
+        <th scope="col"><%= sort_link @q, :monthly_price %></th>
+        <th scope="col"><%= sort_link @q, :discount %></th>
+        <th scope="col"><%= sort_link @q, :amount_of_people %></th>
+        <th scope="col"><%= sort_link @q, :status %></th>
+        <th scope="col"><%= sort_link @q, :created_at %></th>
+        <th scope="col"><%= "Hành động" %></th>
       </tr>
     </thead>
     <tbody>

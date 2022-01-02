@@ -2,9 +2,7 @@
 <div class="container px-4 my-5">
   <div class="row gx-5">
     <div class="col">
-      <% @room.images.each do |image| %>
-        <%= image_tag image, class: "img-fluid rounded m-3" %>
-      <% end %>
+      <%= image_tag @room.photo.url, class: "img-fluid rounded m-3" %>
     </div>
     <div class="col mx-5">
       <h1><%= @room.name %></h1>

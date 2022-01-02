@@ -143,6 +143,7 @@ vi:
   admin:
     admin_dashboard: "Admin Dashboard"
     booking_list: "Danh sách đặt chỗ"
+    rooms_list: "Danh sách phòng"
     view_page_user: "Xem trang cho người dùng"
     not_have_receipt: "Hiện tại không có hóa đơn nào để hiển thị"
     change_success: "Đã thay đổi trạng thái đặt chỗ thành công"
