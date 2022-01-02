@@ -61,19 +61,19 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "dn_intern_mangement_hotel_06_09_21_production"
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
   ActionMailer::Base.smtp_settings = {
-    address: "thawing-refuge-11069.herokuapp.com",
+    address: "smtp.gmail.com",
     port: 587,
     domain: "thawing-refuge-11069.herokuapp.com",
     user_name: "smpasoftware@gmail.com",
     password: "0349923955aA",
     authentication: :plain,
-    enable_starttls_auto: true,
-    openssl_verify_mode: :none
+    enable_starttls_auto: true
   }
-  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.default_url_options[:host] = "thawing-refuge-11069.herokuapp.com"
 
-  config.action_mailer.default_url_options = { :host => "thawing-refuge-11069.herokuapp.com" }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
