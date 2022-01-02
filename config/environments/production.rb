@@ -68,7 +68,7 @@ Rails.application.configure do
     user_name: "smpasoftware@gmail.com",
     password: "0349923955aA",
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
     openssl_verify_mode: "none"
   }
 
