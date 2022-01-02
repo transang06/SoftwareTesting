@@ -1,7 +1,7 @@
 <td scope="row" class="fw-bold"><%= link_to "##{room.id}", room %></td>
 <td scope="row" class="fw-bold"><%= room.name %></td>
 <td scope="row" class="fw-bold">
-  <%= image_tag room.images[0] ,:class => "card-img-top", :alt => room.images[0] %>
+  <%= image_tag(room.photo.url ,:class => "card-img-top", :alt => room.photo.url) if room.photo.url %>
 </td>
 <td scope="row" class="fw-bold"><%= room.type_room %></td>
 <td><%= number_to_currency room.hourly_price, locale: :vi %></td>
