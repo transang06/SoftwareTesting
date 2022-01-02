@@ -63,17 +63,15 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "dn_intern_mangement_hotel_06_09_21_production"
 
   config.action_mailer.perform_caching = false
-
-  ActionMailer::Base.smtp_settings = {
-    address: "smtp.sendgrid.net",
-    port: "587",
+  config.action_mailer.smtp_settings = {
+    address: "smtp.mail.com",
+    port: 587,
+    domain: "thawing-refuge-11069.herokuapp.com",
+    user_name: "smpasoftware@gmail.com",
+    password: "0349923955aA",
     authentication: :plain,
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
-    domain: "thawing-refuge-11069.herokuapp.com"
+    enable_starttls_auto: true
   }
-
-  ActionMailer::Base.delivery_method = :smtp
 
   config.action_mailer.default_url_options = { :host => "thawing-refuge-11069.herokuapp.com" }
   config.action_mailer.delivery_method = :smtp
