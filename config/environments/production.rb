@@ -69,8 +69,9 @@ Rails.application.configure do
     password: "0349923955aA",
     authentication: :plain,
     enable_starttls_auto: true,
-    openssl_verify_mode: "none"
+    openssl_verify_mode: :none
   }
+  ActionMailer::Base.delivery_method = :smtp
 
   config.action_mailer.default_url_options = { :host => "thawing-refuge-11069.herokuapp.com" }
 
