@@ -27,6 +27,7 @@ gem "pg", ">= 0.18"
 gem "groupdate"
 gem "mysql2", ">= 0.4.4"
 gem "chartkick"
+gem "carrierwave", "~> 2.0"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

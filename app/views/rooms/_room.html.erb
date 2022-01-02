@@ -1,7 +1,7 @@
 <div class="col">
   <div class="card h-100">
-    <% if room.images[0] %>
-      <%= image_tag room.images[0] ,:class => "card-img-top", :alt => room.images[0] %>
+    <% if room.photo.url %>
+      <%= image_tag room.photo.url ,:class => "card-img-top", :alt => room.photo.url %>
     <% else %>
       <%= image_tag asset_path("hotel.jpg"), class: "card-img-top", alt: "Hotel" %>
     <% end %>
