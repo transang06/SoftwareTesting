@@ -10,6 +10,5 @@ class Admin::RoomsController < Admin::AdminsController
 
   def new
     @room = Room.new
-    render :edit
   end
 end
