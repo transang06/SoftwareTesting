@@ -1,0 +1,40 @@
+<% provide(:title, "Chỉnh sửa thông tin phòng") %>
+<div class="mx-auto my-2 form_w">
+  <h1><%= "Chỉnh sửa thông tin phòng" %></h1>
+  <div class="row">
+    <div class="col-md-offset-3">
+      <%= form_for @room do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "email", class: "form-control my-2", required: true %>
+
+        <%= f.label :type_room %>
+        <%= f.text_field :type_room, class: "form-control my-2", required: true %>
+
+        <%= f.file_field :images, accept: "image/jpeg,image/gif,image/png", multiple: true %>
+
+        <%= f.label :status %>
+        <%= f.check_box :status %>
+
+        <%= f.label :hourly_price %>
+        <%= f.number_field :hourly_price, class: "form-control my-2", required: true %>
+
+        <%= f.label :day_price %>
+        <%= f.number_field :day_price, class: "form-control my-2", required: true %>
+
+        <%= f.label :monthly_price %>
+        <%= f.number_field :monthly_price, class: "form-control my-2", required: true %>
+
+        <%= f.label :description %>
+        <%= f.text_field :description, class: "form-control my-2", required: true %>
+
+        <%= f.label :amount_of_people %>
+        <%= f.number_field :amount_of_people, class: "form-control my-2", required: true %>
+
+        <%= f.label :discount %>
+        <%= f.number_field :discount, class: "form-control my-2", required: true %>
+
+        <%= f.submit "Change", class: "btn btn-primary my-4" %>
+      <% end %>
+    </div>
+  </div>
+</div>

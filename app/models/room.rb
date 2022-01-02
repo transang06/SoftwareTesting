@@ -2,7 +2,6 @@ class Room < ApplicationRecord
   has_many :furnitures, dependent: :destroy
   has_many :receipts, dependent: :destroy
   has_many_attached :images
-
   validates :name, presence: true
   validates :type_room, presence: true
 
