@@ -1,6 +1,6 @@
 <% provide :title, t("admin.admin_dashboard") %>
 <div class="shadow-sm p-3 mb-5 bg-body rounded row">
-  <div class="col-4 border-end">
+  <div class="col-12 border-bottom border-3 mb-4">
     <%= line_chart Receipt.group_by_week(:created_at).sum(:into_money),
       title: t("admin.index.weekly_revenue"),
       library: {animation: {easing: :easeInOutCubic}}%>
@@ -10,38 +10,9 @@
       title: t("admin.index.spending_customer"),
       library: {animation: {easing: :easeInOutCubic}} %>
   </div>
-  <div class="col-4">
+  <div class="col-8">
     <%= column_chart User.group_by_week(:created_at).count,
       title: t("admin.index.weekly_registering_customers"),
       library: {animation: {easing: :easeInOutCubic}}%>
   </div>
 </div>
-<h3><%= t "receipt.list" %></h3>
-<% unless @receipts.any? %>
-  <h3 class="text-center"><%= t "admin.not_have_receipt" %></h3>
-<% else %>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col"><%= t "rooms.room" %></th>
-        <th scope="col"><%= t "users.job_title.customer" %></th>
-        <th scope="col"><%= t "receipt.table.from" %></th>
-        <th scope="col"><%= t "receipt.table.to" %></th>
-        <th scope="col"><%= t "receipt.table.into_money" %></th>
-        <th scope="col"><%= t "receipt.table.paid" %></th>
-        <th scope="col"><%= t "receipt.payment" %></th>
-        <th scope="col"><%= t "receipt.table.status" %></th>
-        <th scope="col"><%= t "receipt.table.action" %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @receipts.each_with_index do |receipt, index| %>
-        <tr id="receipt-<%= receipt.id %>">
-          <%= render "receipt", receipt: receipt, index: index %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= paginate @receipts %>
-<% end %>

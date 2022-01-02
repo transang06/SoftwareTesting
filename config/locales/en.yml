@@ -142,6 +142,7 @@ en:
     invalid_status: "Invalid invoice status"
   admin:
     admin_dashboard: "Admin Dashboard"
+    booking_list: "Booking list"
     view_page_user: "View page for user"
     not_have_receipt: "There are currently no invoices to display"
     change_success: "Changed booking status successfully"
