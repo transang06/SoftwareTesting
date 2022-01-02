@@ -2,7 +2,7 @@
 <div class="container px-4 my-5">
   <div class="row gx-5">
     <div class="col">
-      <%= image_tag @room.photo.url, class: "img-fluid rounded m-3" %>
+      <%= image_tag(@room.photo.url, class: "img-fluid rounded m-3") if @room.photo.url %>
     </div>
     <div class="col mx-5">
       <h1><%= @room.name %></h1>
