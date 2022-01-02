@@ -20,7 +20,7 @@
     </thead>
     <tbody>
     <% @receipts.each_with_index do |receipt, index| %>
-      <%= render "receipt", receipt: receipt, index: index %>
+      <%= render "receipt", receipt: receipt, index: index + 1 %>
     <% end %>
     </tbody>
   </table>
