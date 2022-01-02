@@ -3,6 +3,11 @@ class Admin::ReceiptsController < Admin::AdminsController
                 only: %i(approved reject)
   after_action :format_js, only: %i(approved reject)
 
+  def index
+    @receipts = Receipt.includes(:user, :room).status_priority.latest
+                       .page(params[:page]).per(Settings.per_page_18)
+  end
+  
   def edit; end
 
   def update; end

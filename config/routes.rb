@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :carts, only: :index do
       collection do
         post :add
-        post :change    
+        post :change
         delete :remove
       end
     end
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
     namespace :admin do
       root "admins#index"
-      resources :receipts, only: %i(edit update) do
+      resources :receipts, only: %i(index edit update) do
         collection do
           put :approved
           put :reject
