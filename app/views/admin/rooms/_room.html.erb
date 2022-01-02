@@ -1,8 +1,5 @@
 <td scope="row" class="fw-bold"><%= link_to "##{room.id}", room %></td>
 <td scope="row" class="fw-bold"><%= room.name %></td>
-<td scope="row" class="fw-bold">
-  <%= image_tag(room.photo.url ,:class => "card-img-top", :alt => room.photo.url) if room.photo.url %>
-</td>
 <td scope="row" class="fw-bold"><%= room.type_room %></td>
 <td><%= number_to_currency room.hourly_price, locale: :vi %></td>
 <td><%= number_to_currency room.day_price, locale: :vi %></td>
@@ -10,4 +7,8 @@
 <td><%= room.discount %>%</td>
 <td><%= room.amount_of_people %></td>
 <td class="<%= color_text room.status %> fw-bold"><%= t "receipt.status_bill.#{room.status}" %></td>
-<td><%= link_to "##{room.id}", edit_admin_room_path(room) %></td>
+<td><%= parse_time room.created_at.to_s %></td>
+<td>
+  <%= link_to "Chi tiết", edit_admin_room_path(room) %> ||
+  <%= link_to "Xóa", room_path(room), method: :delete %>
+</td>

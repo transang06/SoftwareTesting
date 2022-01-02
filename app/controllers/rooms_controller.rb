@@ -16,6 +16,22 @@ class RoomsController < ApplicationController
     redirect_to admin_rooms_path
   end
 
+  def create
+    @room = Room.new room_params
+    if @room.save
+      flash.now[:success] = t ".update_success"
+    else
+      flash.now[:warning] = t ".update_not_success"
+    end
+    redirect_to admin_rooms_path
+  end
+
+  def destroy
+    @room = Room.find_by id: params[:id]
+    @room.destroy
+    redirect_to admin_rooms_path
+  end
+
   def room_params
     params.require(:room).permit :name, :type_room, :status, :hourly_price,
       :day_price, :monthly_price, :description, :discount, :amount_of_people, :photo
@@ -24,7 +40,7 @@ class RoomsController < ApplicationController
   private
 
   def load_room
-    @room = Room.includes(:images_blobs).find_by(id: params[:id])
+    @room = Room.find_by(id: params[:id])
     return if @room
 
     flash[:danger] = t "rooms.not_exist"
