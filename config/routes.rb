@@ -35,6 +35,7 @@ Rails.application.routes.draw do
           put :reject
         end
       end
+      resources :rooms
     end
   end
 end

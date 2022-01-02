@@ -28,7 +28,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <%= link_to t("users.profile"), current_user, class: "dropdown-item" %>
+              <%= link_to t("users.profile"), edit_user_registration_path, class: "dropdown-item" %>
             </li>
             <li>
               <%= link_to t("receipt.history"), receipts_path , class: "dropdown-item" %>

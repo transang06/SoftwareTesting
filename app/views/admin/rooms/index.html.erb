@@ -1,0 +1,31 @@
+<% provide :title, t("receipt.list") %>
+<h3><%= t "receipt.list" %></h3>
+<% unless @rooms.any? %>
+  <h3 class="text-center"><%= t "admin.not_have_receipt" %></h3>
+<% else %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><%= "Name" %></th>
+        <th scope="col"><%= "Image" %></th>
+        <th scope="col"><%= "Type room" %></th>
+        <th scope="col"><%= "hourly_price" %></th>
+        <th scope="col"><%= "day_price" %></th>
+        <th scope="col"><%= "monthly_price" %></th>
+        <th scope="col"><%= "discount" %></th>
+        <th scope="col"><%= "amount_of_people" %></th>
+        <th scope="col"><%= "status" %></th>
+        <th scope="col"><%= "Action" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rooms.each_with_index do |room, index| %>
+        <tr id="receipt-<%= room.id %>">
+          <%= render "room", room: room, index: index %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @rooms %>
+<% end %>

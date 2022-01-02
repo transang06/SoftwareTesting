@@ -30,7 +30,7 @@
               <%= link_to t("vietnamese"), {locale: :vi}, {class: "dropdown-item"} %>
             </li>
           </ul>
-        </li> 
+        </li>
       </ul>
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <%= link_to t("users.profile"), current_user, class: "dropdown-item" %>
+              <%= link_to t("users.profile"), edit_user_registration_path, class: "dropdown-item" %>
             </li>
             <%= content_tag(:li, link_to(t("admin.admin_dashboard"), admin_root_path , class: "dropdown-item")) if current_user.admin? %>
             <li>

@@ -1,0 +1,13 @@
+<td scope="row" class="fw-bold"><%= link_to "##{room.id}", room %></td>
+<td scope="row" class="fw-bold"><%= room.name %></td>
+<td scope="row" class="fw-bold">
+  <%= image_tag room.images[0] ,:class => "card-img-top", :alt => room.images[0] %>
+</td>
+<td scope="row" class="fw-bold"><%= room.type_room %></td>
+<td><%= number_to_currency room.hourly_price, locale: :vi %></td>
+<td><%= number_to_currency room.day_price, locale: :vi %></td>
+<td><%= number_to_currency room.monthly_price, locale: :vi %></td>
+<td><%= room.discount %>%</td>
+<td><%= room.amount_of_people %></td>
+<td class="<%= color_text room.status %> fw-bold"><%= t "receipt.status_bill.#{room.status}" %></td>
+<td><%= link_to "##{room.id}", edit_admin_room_path(room) %></td>
