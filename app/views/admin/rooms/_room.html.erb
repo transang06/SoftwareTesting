@@ -9,6 +9,7 @@
 <td><%= room.status ? "Show" : "Hide" %></td>
 <td><%= parse_time room.created_at.to_s %></td>
 <td>
-  <%= link_to "Detail", edit_admin_room_path(room) %> ||
-  <%= link_to "Delete", room_path(room), method: :delete %>
+  <%= link_to( fa_icon("eye"), edit_admin_room_path(room), {data: {"data-bs-toggle": "tooltip"}, title: "Details", class: "mx-2 fs-5 text-success"})  %>
+  <%= link_to( fa_icon("trash"), room_path(room), {data: {confirm: "Are you sure you want to delete"}, method: :delete,
+  "data-bs-toggle": "tooltip", title: "Delete", class: "mx-2 fs-5 text-muted"}) %>
 </td>
