@@ -69,6 +69,11 @@
   </ul>
 </div>
 <%= link_to t("receipt.print_invoice"), "#", onclick: "printDiv('bill')", class: "col-2 btn-grad"%>
+<style type="text/css" media="print">
+  @page {
+      size: landscape;
+  }
+</style>
 <script>
 function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;
