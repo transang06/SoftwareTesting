@@ -156,5 +156,6 @@ en:
     head_mail_approced: "Booking approved! Thank you for using our service."
     index:
       weekly_revenue: "Weekly revenue"
+      revenue_by_room: "Revenue by room"
       spending_customer: "Spending limit of each customer"
       weekly_registering_customers: "Number of new customers registering each week"
