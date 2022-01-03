@@ -1,69 +1,83 @@
 <% provide :title, t("receipt.receipts", id: @receipt.id,
   job_title: t("users.job_title.#{current_user.role}"),
   name: current_user.first_name + " " + current_user.last_name) %>
-<div class="row">
-  <%= content_tag(:h1, t("receipt.receipts", id: @receipt.id, job_title: t("users.job_title.#{current_user.role}"),
-    name: current_user.first_name + " " + current_user.last_name), class: "col") %>
-  <%= link_to t("receipt.print_invoice"), "#", :onclick => "window.print();return false;", class: "col-2 btn-grad"%>
-</div>
-<%= content_tag(:h4, t("receipt.status_bill.#{@receipt.status}"), class: "col") %>
-<div class="row g-3 needs-validation my-3">
-  <div class="col-md-4">
-    <%= content_tag(:strong,  "Email: #{current_user.email}" ) %>
-  </div>  
-  <div class="col-md-4">
-    <%= content_tag(:strong, t("users.phone") + ": " + current_user.phone) %>
+<div id="bill">
+  <div class="row">
+    <%= content_tag(:h1, t("receipt.receipts", id: @receipt.id, job_title: t("users.job_title.#{current_user.role}"),
+      name: current_user.first_name + " " + current_user.last_name), class: "col") %>
   </div>
-  <div class="col-md-4">
-    <%= content_tag(:strong, t("users.birth") + ": " + "#{current_user.date_of_birth}") %>
-  </div>
+  <%= content_tag(:h4, t("receipt.status_bill.#{@receipt.status}"), class: "col") %>
+  <div class="row g-3 needs-validation my-3">
     <div class="col-md-4">
-    <%= content_tag(:strong, t("receipt.check_in") + "#{@receipt.check_in}" || t("receipt.not_recorded_yet")) %>
-  </div>  
-  <div class="col-md-4">
-    <%= content_tag(:strong, t("receipt.check_out") + "#{@receipt.check_out}" || t("receipt.not_recorded_yet")) %>
+      <%= content_tag(:strong,  "Email: #{current_user.email}" ) %>
+    </div>
+    <div class="col-md-4">
+      <%= content_tag(:strong, t("users.phone") + ": " + current_user.phone) %>
+    </div>
+    <div class="col-md-4">
+      <%= content_tag(:strong, t("users.birth") + ": " + "#{current_user.date_of_birth}") %>
+    </div>
+      <div class="col-md-4">
+      <%= content_tag(:strong, t("receipt.check_in") + "#{@receipt.check_in}" || t("receipt.not_recorded_yet")) %>
+    </div>
+    <div class="col-md-4">
+      <%= content_tag(:strong, t("receipt.check_out") + "#{@receipt.check_out}" || t("receipt.not_recorded_yet")) %>
+    </div>
+    <div class="col-md-4">
+      <%= content_tag(:strong, t("receipt.payment_by") + @receipt.payment) %>
+    </div>
   </div>
-  <div class="col-md-4">
-    <%= content_tag(:strong, t("receipt.payment_by") + @receipt.payment) %>
-  </div>
-</div>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col"><%= t "rooms.room" %></th>
-      <th scope="col"><%= t "receipt.table.from" %></th>
-      <th scope="col"><%= t "receipt.table.to" %></th>
-      <th scope="col"><%= t "cart.rental_period" %></th>
-      <th scope="col"><%= t "receipt.table.into_money" %></th>
-    </tr>
-  </thead>
-  <tbody>
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <th scope="row"><%= link_to "##{@receipt.room_id}", @receipt.room %></th>
-        <td><%= @receipt.from_time.strftime Settings.format_time_view %></td>
-        <td><%= @receipt.end_time.strftime Settings.format_time_view %></td>
-        <td><%= distance_of_time_in_words(@receipt.from_time, @receipt.end_time) %>/<%= convert_to_hours(@receipt.end_time, @receipt.from_time) %>h</td>
-        <td><%= number_to_currency @receipt.into_money, locale: :vi %></td>
+        <th scope="col"><%= t "rooms.room" %></th>
+        <th scope="col"><%= t "receipt.table.from" %></th>
+        <th scope="col"><%= t "receipt.table.to" %></th>
+        <th scope="col"><%= t "cart.rental_period" %></th>
+        <th scope="col"><%= t "receipt.table.into_money" %></th>
       </tr>
-    <tr>
-      <th colspan="4"><%= t "receipt.total" %></th>
-      <th scope="col"><%= number_to_currency @receipt.into_money, locale: :vi %></th>
-    </tr>
-     <tr>
-      <th colspan="4"><%= t "receipt.amount_unpaid" %></th>
-      <th scope="col"><%= number_to_currency @receipt.paid, locale: :vi %></th>
-    </tr>
-  </tbody>
-</table>
-<h5><%= t "receipt.deail_price" %></h5>
-<ul>
-  <li>
-    <%= t "rooms.hourly_price", price: number_to_currency(@receipt.hourly_price, locale: :vi) %>
-  </li>
-  <li>
-    <%= t "rooms.day_price", price: number_to_currency(@receipt.day_price, locale: :vi) %>
-  </li>
-  <li>
-    <%= t "rooms.monthly_price", price: number_to_currency(@receipt.monthly_price, locale: :vi) %>
-  </li>
-</ul>
+    </thead>
+    <tbody>
+        <tr>
+          <th scope="row"><%= link_to "##{@receipt.room_id}", @receipt.room %></th>
+          <td><%= @receipt.from_time.strftime Settings.format_time_view %></td>
+          <td><%= @receipt.end_time.strftime Settings.format_time_view %></td>
+          <td><%= distance_of_time_in_words(@receipt.from_time, @receipt.end_time) %>/<%= convert_to_hours(@receipt.end_time, @receipt.from_time) %>h</td>
+          <td><%= number_to_currency @receipt.into_money, locale: :vi %></td>
+        </tr>
+      <tr>
+        <th colspan="4"><%= t "receipt.total" %></th>
+        <th scope="col"><%= number_to_currency @receipt.into_money, locale: :vi %></th>
+      </tr>
+      <tr>
+        <th colspan="4"><%= t "receipt.amount_unpaid" %></th>
+        <th scope="col"><%= number_to_currency @receipt.paid, locale: :vi %></th>
+      </tr>
+    </tbody>
+  </table>
+  <h5><%= t "receipt.deail_price" %></h5>
+  <ul>
+    <li>
+      <%= t "rooms.hourly_price", price: number_to_currency(@receipt.hourly_price, locale: :vi) %>
+    </li>
+    <li>
+      <%= t "rooms.day_price", price: number_to_currency(@receipt.day_price, locale: :vi) %>
+    </li>
+    <li>
+      <%= t "rooms.monthly_price", price: number_to_currency(@receipt.monthly_price, locale: :vi) %>
+    </li>
+  </ul>
+</div>
+<%= link_to t("receipt.print_invoice"), "#", onclick: "printDiv('bill')", class: "col-2 btn-grad"%>
+<script>
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
