@@ -1,7 +1,7 @@
 <% provide :title, t("admin.admin_dashboard") %>
 <div class="shadow-sm p-3 mb-5 bg-body rounded row">
   <div class="col-12 border-bottom border-3 mb-4">
-    <%= line_chart Receipt.by_day_from(Date.today.at_beginning_of_week ).joins(:room).group("rooms.name")
+    <%= line_chart Receipt.by_day_from(Date.today.at_beginning_of_month ).joins(:room).group("rooms.name")
       .group_by_day(:created_at).sum(:into_money),
       title: t("admin.index.revenue_by_room"),
       library: {animation: {easing: :easeInOutCubic}}%>
