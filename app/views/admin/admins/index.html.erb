@@ -6,7 +6,7 @@
       title: t("admin.index.revenue_by_room"),
       library: {animation: {easing: :easeInOutCubic}}%>
   </div>
-  <div class="col-12 border-bottom border-3 mb-4">
+  <div class="col-4 border-bottom border-3 mb-4">
     <%= area_chart Receipt.group_by_week(:created_at).sum(:into_money),
       title: t("admin.index.weekly_revenue"),
       library: {animation: {easing: :easeInOutCubic}}%>
@@ -16,7 +16,7 @@
       title: t("admin.index.spending_customer"),
       library: {animation: {easing: :easeInOutCubic}} %>
   </div>
-  <div class="col-8">
+  <div class="col-4">
     <%= column_chart User.group_by_week(:created_at).count,
       title: t("admin.index.weekly_registering_customers"),
       library: {animation: {easing: :easeInOutCubic}}%>
