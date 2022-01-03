@@ -2,7 +2,11 @@
 <div class="container px-4 my-5">
   <div class="row gx-5">
     <div class="col">
-      <%= image_tag(@room.photo.url, class: "img-fluid rounded m-3") if @room.photo.url %>
+      <% if @room.photo.url %>
+        <%= image_tag @room.photo.url , class: "img-fluid rounded m-3", alt: @room.photo.url %>
+      <% else %>
+        <%= image_tag asset_path("hotel.jpg"), class: "img-fluid rounded m-3", alt: "Hotel" %>
+      <% end %>
     </div>
     <div class="col mx-5">
       <h1><%= @room.name %></h1>

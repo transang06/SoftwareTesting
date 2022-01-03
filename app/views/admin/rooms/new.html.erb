@@ -47,7 +47,7 @@
         <%= f.label :description %>
         <%= f.text_area :description, class: "form-control my-2", rows: 5, required: true %>
         <%= f.label :photo %>
-        <%= f.file_field :photo %>
+        <%= f.file_field :photo, accept: "image/png, image/gif, image/jpeg" %>
         <%= image_tag(@room.photo.url, class: "card-img-top my-4") if @room.photo.url %>
         <%= f.submit "Create", class: "btn btn-primary my-4" %>
       <% end %>

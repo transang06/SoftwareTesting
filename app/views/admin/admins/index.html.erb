@@ -5,6 +5,11 @@
       title: t("admin.index.weekly_revenue"),
       library: {animation: {easing: :easeInOutCubic}}%>
   </div>
+   <div class="col-12 border-bottom border-3 mb-4">
+    <%= line_chart Receipt.joins(:room).group("rooms.name").group_by_week(:created_at).sum(:into_money),
+      title: t("admin.index.revenue_by_room"),
+      library: {animation: {easing: :easeInOutCubic}}%>
+  </div>
   <div class="col-4 border-end">
     <%= pie_chart Receipt.joins(:user).group("users.last_name").sum(:into_money),
       title: t("admin.index.spending_customer"),
