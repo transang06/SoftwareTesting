@@ -156,6 +156,6 @@ vi:
     head_mail_approced: "Đặt chỗ đã được chấp thuận! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi."
     index:
       weekly_revenue: "Doanh thu hàng tuần"
-      revenue_by_room: "Doanh thu theo phòng"
+      revenue_by_room: "Doanh thu theo phòng trong ngày"
       spending_customer: "Hạn mức chi tiêu của từng khách hàng"
       weekly_registering_customers: "Số lượng khách hàng đăng ký mới mỗi tuần"
