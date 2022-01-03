@@ -6,9 +6,9 @@
 <td><%= number_to_currency room.monthly_price, locale: :vi %></td>
 <td><%= room.discount %>%</td>
 <td><%= room.amount_of_people %></td>
-<td class="<%= color_text room.status %> fw-bold"><%= t "receipt.status_bill.#{room.status}" %></td>
+<td><%= room.status ? "Show" : "Hide" %></td>
 <td><%= parse_time room.created_at.to_s %></td>
 <td>
-  <%= link_to "Chi tiết", edit_admin_room_path(room) %> ||
-  <%= link_to "Xóa", room_path(room), method: :delete %>
+  <%= link_to "Detail", edit_admin_room_path(room) %> ||
+  <%= link_to "Delete", room_path(room), method: :delete %>
 </td>

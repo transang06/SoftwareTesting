@@ -1,7 +1,7 @@
-<% provide :title, t("receipt.rooms_list") %>
+<% provide :title, "Room list" %>
 <div class="row justify-content-between">
-  <h3 class="col-3"><%= t "receipt.list" %></h3>
-  <%= link_to "Tạo mới", new_admin_room_path, class: "btn btn-primary col-1 p-3 m-2 fw-bold" %>
+  <h3 class="col-3">Room list</h3>
+  <%= link_to "Create a new room", new_admin_room_path, class: "btn btn-primary col-2 p-3 m-2 fw-bold" %>
 </div>
 <% unless @rooms.any? %>
   <h3 class="text-center"><%= t "admin.not_have_receipt" %></h3>
@@ -9,7 +9,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col"><%= sort_link @q, :id %></th>
         <th scope="col"><%= sort_link @q, :name %></th>
         <th scope="col"><%= sort_link @q, :type_room %></th>
         <th scope="col"><%= sort_link @q, :hourly_price %></th>
@@ -19,7 +19,7 @@
         <th scope="col"><%= sort_link @q, :amount_of_people %></th>
         <th scope="col"><%= sort_link @q, :status %></th>
         <th scope="col"><%= sort_link @q, :created_at %></th>
-        <th scope="col"><%= "Hành động" %></th>
+        <th scope="col"><%= "Action" %></th>
       </tr>
     </thead>
     <tbody>

@@ -9,9 +9,9 @@ class RoomsController < ApplicationController
   def update
     @room = Room.find_by id: params[:id]
     if @room.update room_params
-      flash.now[:success] = t ".update_success"
+      flash[:success] = "Cập nhật thành công"
     else
-      flash.now[:warning] = t ".update_not_success"
+      flash[:warning] = "Cập nhật thất bại"
     end
     redirect_to admin_rooms_path
   end
@@ -19,9 +19,9 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new room_params
     if @room.save
-      flash.now[:success] = t ".update_success"
+      flash[:success] =  "Tạo phòng thành công"
     else
-      flash.now[:warning] = t ".update_not_success"
+      flash[:warning] = "Tạo phòng thất bại"
     end
     redirect_to admin_rooms_path
   end
@@ -29,6 +29,7 @@ class RoomsController < ApplicationController
   def destroy
     @room = Room.find_by id: params[:id]
     @room.destroy
+    flash[:success] =  "Xóa phòng thành công"
     redirect_to admin_rooms_path
   end
 

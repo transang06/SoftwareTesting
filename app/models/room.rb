@@ -12,6 +12,7 @@ class Room < ApplicationRecord
                 :name_or_type_room_or_description_or_furnitures_name
   scope :latest, ->{order created_at: :desc}
   scope :not_in, ->(room_ids){where "rooms.id NOT IN (?)", room_ids}
+  scope :status_is, ->(status){where status: status}
 
   class << self
     def ransackable_attributes auth_object = nil

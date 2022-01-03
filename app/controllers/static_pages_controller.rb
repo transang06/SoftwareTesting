@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   before_action :load_room_busy, only: :home
 
   def home
-    @rooms = @q.result.not_in(@room_ids_busy).latest
+    @rooms = @q.result.not_in(@room_ids_busy).status_is(true).latest
               .page(params[:page]).per Settings.per_page_18
   end
 
