@@ -7,7 +7,7 @@ class Receipt < ApplicationRecord
   scope :status_priority, ->{order :status}
   scope :latest, ->{order created_at: :desc}
   scope :by_day_from, (lambda do |from_time|
-    where("receipts.created_at <= ?", from_time) if from_time.present?
+    where("receipts.created_at >= ?", from_time) if from_time.present?
   end)
   scope :status_approved, ->{where "receipts.status = 1"}
   scope :on_busy_from, (lambda do |from_time|
